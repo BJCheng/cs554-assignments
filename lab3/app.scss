@@ -1,0 +1,21 @@
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+
+img{
+    max-height: 120px; 
+}
+
+.btn-primary{
+    color: white !important
+}
+
+.bg-primary{
+    color: white;
+}
+
+h1{
+    @extend h4;
+}
+
+h2{
+    @extend h6;
+}
