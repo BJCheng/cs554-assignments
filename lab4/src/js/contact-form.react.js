@@ -84,6 +84,7 @@ export default class ContactForm extends React.Component {
     handleInputChange(e) {
         let name = e.target.name;
         let value = e.target.value;
+        // should be removed if all the value coming from the parent state
         this.setState({
             [name]: value
         });

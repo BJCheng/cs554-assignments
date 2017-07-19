@@ -36,9 +36,9 @@ export default class contact extends React.Component {
                     <div className="card-header">
                         <h1 className="card-title">{`${this.props.data.first_name} ${this.props.data.last_name}`}</h1>
                         <h2 className="card-subtitle text-muted mb-3">{(this.props.data.company) ? this.props.data.company : '---'}</h2>
-                        <a className="btn btn-primary" data-toggle="collapse" href={`#${this.props.data.first_name}-${this.props.data.last_name}`} aria-expanded="false" aria-controls={`${this.props.data.first_name}-${this.props.data.last_name}`} >Show Detail</a>
+                        <a className="btn btn-primary" data-toggle="collapse" href={`#${this.props.data.first_name}-${this.props.data.last_name}`} aria-expanded="false" aria-controls={`${this.props.data.first_name}-${this.props.data.last_name}`} onClick={this.toggleClass} >Show Detail</a>
                     </div>
-                    <div className="collapse card-block" id={`${this.props.data.first_name}-${this.props.data.last_name}`}>
+                    <div className="collapse" id={`${this.props.data.first_name}-${this.props.data.last_name}`}>
                         {this.state.cardTexts}
                     </div>
                 </div>
@@ -50,7 +50,7 @@ export default class contact extends React.Component {
         let cardBlock = document.getElementById(`${this.props.data.first_name}-${this.props.data.last_name}`);
         let className = cardBlock.className;
         if (className.indexOf('card-block') > -1) {
-            cardBlock.className.replace('card-block', '');
+            cardBlock.className = cardBlock.className.replace('card-block', '');
         } else {
             cardBlock.className += " card-block";
         }

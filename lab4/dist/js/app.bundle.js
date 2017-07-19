@@ -10199,13 +10199,13 @@ var contact = function (_React$Component) {
                         ),
                         _react2.default.createElement(
                             'a',
-                            { className: 'btn btn-primary', 'data-toggle': 'collapse', href: '#' + this.props.data.first_name + '-' + this.props.data.last_name, 'aria-expanded': 'false', 'aria-controls': this.props.data.first_name + '-' + this.props.data.last_name },
+                            { className: 'btn btn-primary', 'data-toggle': 'collapse', href: '#' + this.props.data.first_name + '-' + this.props.data.last_name, 'aria-expanded': 'false', 'aria-controls': this.props.data.first_name + '-' + this.props.data.last_name, onClick: this.toggleClass },
                             'Show Detail'
                         )
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'collapse card-block', id: this.props.data.first_name + '-' + this.props.data.last_name },
+                        { className: 'collapse', id: this.props.data.first_name + '-' + this.props.data.last_name },
                         this.state.cardTexts
                     )
                 )
@@ -10217,7 +10217,7 @@ var contact = function (_React$Component) {
             var cardBlock = document.getElementById(this.props.data.first_name + '-' + this.props.data.last_name);
             var className = cardBlock.className;
             if (className.indexOf('card-block') > -1) {
-                cardBlock.className.replace('card-block', '');
+                cardBlock.className = cardBlock.className.replace('card-block', '');
             } else {
                 cardBlock.className += " card-block";
             }

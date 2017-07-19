@@ -28,34 +28,34 @@ class Contacts extends React.Component {
                 return <Contact key={contact.id} data={contact} />
             });
             return (
-            <div className="row px-5 py-4">
-                <div className="col-sm-12 col-md-3 border-top-1">
-                    <ContactForm onFormChange={this.handleFormChange} onSubmit={this.handleSubmit}/>
-                </div>
-                <div className="col-sm-12 col-md-9">
-                    <div className="row">{contactList}</div>
-                </div>
-            </div>);
+                <div className="row px-5 py-4">
+                    <div className="col-sm-12 col-md-3 border-top-1">
+                        <ContactForm onFormChange={this.handleFormChange} onSubmit={this.handleSubmit} />
+                    </div>
+                    <div className="col-sm-12 col-md-9">
+                        <div className="row">{contactList}</div>
+                    </div>
+                </div>);
         } else {
             return <div>fetching...</div>
         }
     }
 
-    handleFormChange(obj){
+    handleFormChange(obj) {
         this.setState(obj);
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         let formData = this.state;
         delete formData.contactList;
         $.ajax({
-            url: 'contact', 
-            method: 'POST', 
-            data: formData, 
+            url: 'contact',
+            method: 'POST',
+            data: formData,
             dataType: 'json',
-            success: function(data){
-                this.setState({contactList: data});
+            success: function (data) {
+                this.setState({ contactList: data });
                 alert('Please scroll to the bottom to see the new contact has been made.');
             }.bind(this)
         });
