@@ -1,23 +1,51 @@
-var redis = require('redis');
-var client = redis.createClient();
 var getById = require('../data/index.js');
-var bluebird = require('bluebird');
-
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
+var sender = require('./sender');
 
 function configRoute(app) {
-    app.get('/api/people/:id', (req, res)=>{
+    app.get('/api/people/:id', async (req, res) => {
         //return a person from the worker, and render JSON of the person
+        let result;
+        try {
+            result = await sender.getContactById(req.params.id);
+        } catch (e) {
+            result = e;
+        }
+
+        res.send(result);
     });
-    app.post('/api/people', (req, res)=>{
+
+    app.post('/api/people', async (req, res) => {
         //creates a person, and render JSON of the person created
+        let result;
+        try {
+            result = await sender.createNewContact();
+
+        } catch (err) {
+            result = err;
+        }
+        res.send(result);
     });
-    app.put('/api/people/:id', (req, res)=>{
+
+    app.put('/api/people/:id', async (req, res) => {
         //updates a person, and render JSON of the person updated
+        let result;
+        try{
+            result = await sender.updateContactById(req.params.id);
+        } catch(e){
+            result = e;
+        }
+        res.send(result);
     });
-    app.dalete('/api/people/:id', (req, res)=>{
+
+    app.delete('/api/people/:id', async (req, res) => {
         //deletes a person, and render JSON stating that the operation completed
+        let result;
+        try {
+            result = await sender.deleteContactById(req.params.id);
+        } catch (e) {
+            result = e;
+        }
+        res.send(result);
     });
 
 
@@ -36,7 +64,7 @@ function configRoute(app) {
             }
 
             let people = []
-            for(let i=0; i<keys.length; i++){
+            for (let i = 0; i < keys.length; i++) {
                 let key = keys[i];
                 let object = await client.getAsync(key);
                 let person = JSON.parse(object);
