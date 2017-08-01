@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>lab7</title>
+</head>
+
+<body>
+	<form action="/">
+		<div>
+			<label for="username">User Name</label>
+			<input id='username' />
+		</div>
+		<div>
+			<label for="searchQuery">Search</label>
+			<input id='searchQuery' value="yellow flower" />
+		</div>
+		<div>
+			<label for="message">Message</label>
+			<input id="message" autocomplete="off" />
+		</div>
+		<button>Send</button>
+	</form>
+	<div id="result"></div>
+	<ul id="imgList"></ul>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/tota11y/0.1.6/tota11y.min.js"></script>
+	<script>
+		const username = $("#username");
+		const searchQuery = $("#searchQuery");
+		const message = $("#message");
+		const imgList = $("#imgList");
+		const theForm = $("form");
+		const result = $("#result");
+		const roomSelector = $("#room-selector");
+
+		const socket = io();
+
+		theForm.submit(function () {
+			let data = {
+				username: username.val(),
+				searchQuery: searchQuery.val(),
+				message: message.val(),
+			};
+
+			socket.emit('research', data);
+			message.val('');
+			return false;
+		});
+
+		socket.on('result', (data) => {
+			console.log(data);
+			if (data.hits.length < 1) {
+				result.empty();
+				var newContent = document.createTextNode("No results");
+				result.append(newContent);
+			}
+			else {
+				result.empty();
+				var newContent = document.createTextNode(data.username + ' says: ');
+				result.append(newContent);
+				newContent = document.createTextNode(data.message);
+				result.append(newContent);
+				for (let i = 0; i < 3; i++) {
+					var imgLi = document.createElement('li');
+					var img = document.createElement('img')
+					img.setAttribute('src', data.hits[i].webformatURL);
+					img.setAttribute('width', '320px');
+					imgLi.appendChild(img);
+					imgList.append(imgLi);
+				}
+			}
+		});
+
+		socket.on('error', (data) => {
+			console.log(data);
+		});
+	</script>
+</body>
+
+</html>
