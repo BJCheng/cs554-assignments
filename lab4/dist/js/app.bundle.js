@@ -10096,6 +10096,7 @@ var ContactForm = function (_React$Component) {
         value: function handleInputChange(e) {
             var name = e.target.name;
             var value = e.target.value;
+            // should be removed if all the value coming from the parent state
             this.setState(_defineProperty({}, name, value));
 
             this.props.onFormChange(_defineProperty({}, name, value));
