@@ -1,0 +1,16 @@
+div#footer, div#navBar, div#title, div#content{
+    /* border:1px #ccc solid; */
+    /* padding:10px; */
+}
+
+div#content{
+    display:flex;
+}
+
+div#dashboard{
+    flex:1
+}
+
+div#mainContent{
+    flex:4
+}
