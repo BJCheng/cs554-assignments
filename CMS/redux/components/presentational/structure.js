@@ -6,7 +6,7 @@ import { blue300, blue500, blue700, red500 } from 'material-ui/styles/colors';
 import Action from '../../action';
 import Contents from '../../../enums/contents';
 
-class Entry extends React.Component {
+class Structure extends React.Component {
     constructor() {
         super();
         this.handleEdit = this.handleEdit.bind(this);
@@ -14,14 +14,20 @@ class Entry extends React.Component {
     }
 
     render() {
-        let rowColumns = Object.keys(this.props.entry).map((property, index) => {
-            return (
-                <TableRowColumn key={`entryRowColumn${index}`}>{this.props.entry[property]}</TableRowColumn>
-            );
-        });
         return (
-            <TableRow >
-                {rowColumns}
+            <TableRow name={this.props.structure.id} >
+                <TableRowColumn>{this.props.structure.name}</TableRowColumn>
+                <TableRowColumn>{this.props.structure.slug}</TableRowColumn>
+                <TableRowColumn>{this.props.structure.description}</TableRowColumn>
+                <TableRowColumn>{this.props.structure.pageSize}</TableRowColumn>
+                <TableRowColumn>{this.props.structure.fields.length}</TableRowColumn>
+                <TableRowColumn>
+                    <RaisedButton label='Entries' backgroundColor={blue500} labelColor={'#fafafa'}
+                        onClick={this.onClick.bind(this, this.props.structure)} />
+                </TableRowColumn>
+                <TableRowColumn>
+                    <RaisedButton label='Edit' disabled={true} backgroundColor={blue500} labelColor={'#fafafa'} onClick={this.handleEdit} />
+                </TableRowColumn>
                 <TableRowColumn>
                     <RaisedButton label='Delete' backgroundColor={red500} labelColor={'#fafafa'} onClick={this.handleDelete} />
                 </TableRowColumn>
@@ -46,11 +52,10 @@ class Entry extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        structure: ownProps.structure,
-        entry: ownProps.entry
+        structure: ownProps.structure
     }
 }
 
-const entryContainer = connect(mapStateToProps)(Entry);
+const structureContainer = connect()(Structure);
 
-export default entryContainer;
+export default structureContainer;

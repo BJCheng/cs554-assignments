@@ -1,10 +1,11 @@
 const CONTENTS = {
-    StructureListing: 'STRUCTURE_LISTING', 
-    CreateStructure: 'CREATE_STRUCTURE', 
-    EditStructure: 'EDIT_STRUCTURE', 
-    TheEntityPage: 'THE_ENTITY_PAGE', 
+    StructureListing: 'STRUCTURE_LISTING',
+    CreateStructure: 'CREATE_STRUCTURE',
+    EditStructure: 'EDIT_STRUCTURE',
+    TheEntityPage: 'THE_ENTRY_PAGE',
     ListUsers: 'LIST_USERS',
-    Favorites: 'FAVORITES'
+    Favorites: 'FAVORITES',
+    EntryListing: 'ENTRY_LISTING'
 }
 
 export default CONTENTS;

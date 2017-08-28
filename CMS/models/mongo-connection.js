@@ -1,7 +1,7 @@
 var mongoClient = require('mongodb').MongoClient;
 
 const config = {
-    serverUrl: 'mongodb://admin:admin@ds151973.mlab.com:51973/cms', 
+    serverUrl: 'mongodb://admin:admin@ds151973.mlab.com:51973/', 
     db: 'cms'
 };
 

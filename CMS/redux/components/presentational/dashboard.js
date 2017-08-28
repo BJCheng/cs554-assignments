@@ -33,10 +33,10 @@ class Dashboard extends React.Component {
         return (
             <List style={style}>
                 {/* click item to change the state of mainContent */}
-                <ListItem id='structures' primaryText="Structures" leftIcon={<ActionList />} onClick={this.onClick.bind(this, 'structures')} />
                 <ListItem id='users' primaryText="Users" leftIcon={<ActionUsers />} onClick={this.onClick.bind(this, 'users')} />
                 <ListItem id='favorites' primaryText="Favorites" leftIcon={<ActionFavorite />} onClick={this.onClick.bind(this, 'favorites')} />
                 <Divider style={{ margin: '5 0' }} />
+                <ListItem id='structures' primaryText="Structures" leftIcon={<ActionList />} onClick={this.onClick.bind(this, 'structures')} />
                 <ListItem primaryText="Create Strucutre" leftIcon={<ContentCreate />} onClick={this.onClick.bind(this, 'createStructure')} />
             </List>
         );

@@ -1,4 +1,4 @@
-const mongoCollection = require('./models/mongoCollection');
+const mongoCollection = require('./models/mongo-collection');
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 

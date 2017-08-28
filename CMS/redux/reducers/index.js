@@ -3,10 +3,9 @@ import Contents from '../../enums/contents';
 
 function reducer(state, action) {
     Object.freeze(state);
-
     switch (action.type) {
         case ActionType.ChangeContent:
-            return Object.assign({}, state, { content: action.content });
+            return Object.assign({}, state, { content: action.content, structureBeingListed: action.structure });
 
         case ActionType.NewStructureOnChange:
             let newStructure = Object.assign({}, state.newStructure);
@@ -42,6 +41,15 @@ function reducer(state, action) {
             let newStructure3 = JSON.parse(JSON.stringify(state.newStructure));
             newStructure3.structureCreated = false;
             return Object.assign({}, state, { newStructure: newStructure3 });
+
+        case ActionType.UpdateStructures:
+            return Object.assign({}, state, { structures: action.structures });
+
+        case ActionType.ToggleEntryDialog:
+            return Object.assign({}, state, { toggleEntryDialog: action.isOpen });
+
+        case ActionType.UpdateEntries:
+            return Object.assign({}, state, { entries: action.entries });
 
         default:
             return state;

@@ -10,11 +10,14 @@ import reduxThunk from 'redux-thunk';
 injectTapEventPlugin();
 
 let preloadedState = {
-    content: Contents.CreateStructure,
+    content: Contents.StructureListing,
+    structures: [],
     newStructure: {
         structureName: '', structureSlug: '', structureDescription: '', structurePageSize: '',
         fields: [{ label: '', type: '' }], structureCreated: false
-    }
+    }, 
+    entries: [], 
+    toggleEntryDialog: false
 };
 const store = createStore(reducer, preloadedState, applyMiddleware(reduxThunk));
 

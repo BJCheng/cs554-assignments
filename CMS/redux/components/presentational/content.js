@@ -5,6 +5,7 @@ import StructureListing from './structure-listing';
 import CreateStructure from './create-structure';
 import EditStructure from './edit-structure';
 import TheEntityPage from './the-entity-page';
+import EntryListing from './entry-listing';
 
 class Content extends React.Component {
     constructor() {
@@ -39,6 +40,8 @@ class Content extends React.Component {
                 return <div>favorites</div>;
             case CONTENTS.ListUsers:
                 return <div>users</div>;
+            case CONTENTS.EntryListing:
+                return <EntryListing structure={this.props.structureBeingListed} />
             default:
                 return (<div>default</div>);
         }

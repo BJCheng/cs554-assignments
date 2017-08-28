@@ -5,5 +5,9 @@ export default {
     AddStructureField: 'ADD_STRUCTURE_FIELD',
     CreateStructur: 'CREATE_STRUCTUR', 
     StructureCreated: 'STRUCTURE_CREATED',
-    CloseSnackbar: 'CLOSE_SNACKBAR'
+    CloseSnackbar: 'CLOSE_SNACKBAR',
+    UpdateStructures: 'UPDATE_STRUCTURES',
+    DeleteStructure: 'DELETE_STRUCTURE',
+    ToggleEntryDialog: 'TOGGLE_ENTRY_DIALOG',
+    UpdateEntries: 'UPDATE_ENTRIES'
 };

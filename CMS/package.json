@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --progress",
     "spa": "nodemon spa",
+    "worker": "nodemon worker",
     "api": "nodemon api",
     "jest": "jest"
   },
@@ -36,7 +37,8 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "node-redis-pubsub": "^1.0.3"
   },
   "jest": {
     "testEnvironment": "node"

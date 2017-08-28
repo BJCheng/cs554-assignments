@@ -5,7 +5,8 @@ import Actions from '../action';
 
 function mapStateToProps(state) {
     return {
-        content: state.content
+        content: state.content, 
+        structureBeingListed: state.structureBeingListed
     };
 }
 
