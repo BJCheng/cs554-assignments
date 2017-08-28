@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --progress",
-    "spa": "nodemon spa"
+    "spa": "nodemon spa",
+    "api": "nodemon api",
+    "jest": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +18,9 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "jquery": "^3.2.1",
     "material-ui": "^0.18.6",
     "mongodb": "^2.2.30",
     "react": "^15.6.1",
@@ -29,6 +34,11 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "express": "^4.15.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

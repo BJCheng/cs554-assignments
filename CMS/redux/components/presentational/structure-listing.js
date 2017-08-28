@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Entry from './entry';
-import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
+import { Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
 
 class StructureListing extends React.Component {
     constructor() {
         super();
-        this.renderEntryList = this.renderEntryList.bind(this);
     }
 
     componentWillMount() {
@@ -15,30 +14,30 @@ class StructureListing extends React.Component {
     }
 
     render() {
-         {return this.renderEntryList()}
-    };
-
-    renderEntryList() {
         let entryList = this.props.entryList.map((entry) => {
-            return <Entry title={entry.title} createdDate={entry.createdDate} commentsLength={entry.comments.length} />;
+            return <Entry key={entry.title + entry.createdDate}
+                title={entry.title} createdDate={entry.createdDate} commentsLength={entry.comments.length} />;
         });
-        console.log(entryList);
-        return entryList;
-        // return (
-        //     <Table>
-        //         <TableBody>
-        //             <TableRow>
-        //                 <TableRowColumn>'title'</TableRowColumn>
-        //                 <TableRowColumn>'2017/08/01'</TableRowColumn>
-        //                 <TableRowColumn>3</TableRowColumn>
-        //             </TableRow>
-        //         </TableBody>
-        //     </Table>
-        // );
-    }
+
+        return (
+            <Table style={{ margin: '20px auto 0' }}>
+                <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                    <TableRow>
+                        <TableHeaderColumn>Entry Title</TableHeaderColumn>
+                        <TableHeaderColumn>Created Date</TableHeaderColumn>
+                        <TableHeaderColumn>Comments</TableHeaderColumn>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {entryList}
+                </TableBody>
+            </Table>
+        );
+    };
 }
 
 function mapStateToProps(state) {
+    console.log('state in structure-listing:', state);
     return {
         entryList: [
             {
@@ -48,6 +47,11 @@ function mapStateToProps(state) {
             },
             {
                 title: 'entry2',
+                createdDate: '2018/08/01',
+                comments: ['1', '2', '3']
+            },
+            {
+                title: 'entry3',
                 createdDate: '2018/08/01',
                 comments: ['1', '2', '3']
             }

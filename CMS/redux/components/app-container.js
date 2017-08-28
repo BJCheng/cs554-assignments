@@ -16,7 +16,6 @@ function App(props) {
         <MuiThemeProvider>
             <div>
                 <NavBarContainer/>
-                <TitleContainer/>
                 <ContentContainer/>
             </div>
         </MuiThemeProvider>

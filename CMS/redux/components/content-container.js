@@ -1,13 +1,22 @@
 import { connect } from 'react-redux';
 import CONTENTS from '../../enums/contents';
 import Content from './presentational/content';
+import Actions from '../action';
 
 function mapStateToProps(state) {
     return {
-        content: CONTENTS.StructureListing
+        content: state.content
     };
 }
 
-const ContentContainer = connect(mapStateToProps)(Content);
+function mapDispatchToProps(dispatch){
+    return {
+        changeContent: function(content){
+            dispatch(Actions.changeContent(content));
+        }
+    };
+}
+
+const ContentContainer = connect(mapStateToProps, mapDispatchToProps)(Content);
 
 export default ContentContainer;
